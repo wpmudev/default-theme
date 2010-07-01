@@ -1,15 +1,15 @@
 <?php
 /*
 Plugin Name: Default Theme
-Plugin URI: http://premium.wpmudev.org/project/default-theme
-Description: Allows you to easily select a new default theme for new blogs
-Author: Andrew Billits and Aaron Edwards
+Plugin URI: 
+Description:
+Author: Andrew Billits
 Version: 1.0.1
-WDP ID: 48
+Author URI:
 */
 
 /* 
-Copyright 2007-2010 Incsub (http://incsub.com)
+Copyright 2007-2009 Incsub (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -38,24 +38,12 @@ add_action('wpmu_new_blog', 'default_theme_switch_theme', 1, 1);
 //------------------------------------------------------------------------//
 
 function default_theme_switch_theme($blog_ID) {
-
 	$default_theme = get_site_option('default_theme');
-  $themes = get_themes();
-
-  //we have to go through all this to handle child themes, otherwise it will throw errors
-  foreach( (array) $themes as $key => $theme ) {
-		$stylesheet = wp_specialchars($theme['Stylesheet']);
-		$template = wp_specialchars($theme['Template']);
-		if ($default_theme == $stylesheet || $default_theme == $template) {
-      $new_stylesheet = $stylesheet;
-      $new_template = $template;
-		}
+	if ( !empty( $default_theme ) ) {
+		switch_to_blog( $blog_ID );
+		switch_theme( $default_theme, $default_theme );
+		restore_current_blog();
 	}
-
-  //activate it
-  switch_to_blog( $blog_ID );
-	switch_theme( $new_template, $new_stylesheet );
-	restore_current_blog();
 }
 
 function default_theme_site_admin_options_process() {
