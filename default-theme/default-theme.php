@@ -1,15 +1,17 @@
 <?php
 /*
 Plugin Name: Default Theme
-Plugin URI: 
-Description:
-Author: Andrew Billits
-Version: 1.0.1
-Author URI:
+Version: 1.0.2
+Plugin URI: http://premium.wpmudev.org/project/default-theme
+Description: Allows you to easily select a new default theme for new blog signups
+Author: Aaron Edwards (for Incsub)
+Author URI: http://uglyrobot.com
+Network: true
+WDP ID: 48
 */
 
 /* 
-Copyright 2007-2009 Incsub (http://incsub.com)
+Copyright 2007-2011 Incsub (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
@@ -25,10 +27,15 @@ along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
+//force multisite
+if ( !is_multisite() )
+  exit( __('Default Theme is only compatible with Multisite installs.', 'defaulttheme') );
+
 //------------------------------------------------------------------------//
 //---Hook-----------------------------------------------------------------//
 //------------------------------------------------------------------------//
 
+add_action('plugins_loaded', 'default_theme_localization');
 add_action('wpmu_options', 'default_theme_site_admin_options');
 add_action('update_wpmu_options', 'default_theme_site_admin_options_process', 1);
 add_action('wpmu_new_blog', 'default_theme_switch_theme', 1, 1);
@@ -36,6 +43,12 @@ add_action('wpmu_new_blog', 'default_theme_switch_theme', 1, 1);
 //------------------------------------------------------------------------//
 //---Functions------------------------------------------------------------//
 //------------------------------------------------------------------------//
+
+function default_theme_localization() {
+  // Load up the localization file if we're using WordPress in a different language
+	// Place it in this plugin's "languages" folder and name it "defaulttheme-[value in wp-config].mo"
+  load_plugin_textdomain( 'defaulttheme', false, '/default-theme/languages' );
+}
 
 function default_theme_switch_theme($blog_ID) {
 	$default_theme = get_site_option('default_theme');
@@ -63,20 +76,20 @@ function default_theme_site_admin_options() {
 		$default_theme = 'default';
 	}
 ?>
-		<h3><?php _e('Theme Settings') ?></h3>
+		<h3><?php _e('Theme Settings', 'defaulttheme') ?></h3>
 		<table class="form-table">
-            <tr valign="top"> 
-            <th scope="row"><?php _e('Default Theme') ?></th> 
-            <td><select name="default_theme">
-            <?php
-				foreach( $themes as $key => $theme ) {
-					$theme_key = wp_specialchars( $theme['Stylesheet'] );
-                    echo '<option value="' . $theme_key . '"' . ($theme_key == $default_theme ? ' selected' : '') . '>' . $key . '</option>' . "\n";
-				}
-            ?>
-            </select>
-            <br /><?php _e('Default theme applied to new blogs.'); ?></td> 
-            </tr>
+      <tr valign="top"> 
+      <th scope="row"><?php _e('Default Theme', 'defaulttheme') ?></th>
+      <td><select name="default_theme">
+      <?php
+    	foreach( $themes as $key => $theme ) {
+    		$theme_key = wp_specialchars( $theme['Stylesheet'] );
+                  echo '<option value="' . $theme_key . '"' . ($theme_key == $default_theme ? ' selected' : '') . '>' . $key . '</option>' . "\n";
+    	}
+      ?>
+      </select>
+      <br /><?php _e('Default theme applied to new blogs.', 'defaulttheme'); ?></td>
+      </tr>
 		</table>
 <?php
 }
@@ -85,4 +98,16 @@ function default_theme_site_admin_options() {
 //---Page Output Functions------------------------------------------------//
 //------------------------------------------------------------------------//
 
+
+///////////////////////////////////////////////////////////////////////////
+/* -------------------- Update Notifications Notice -------------------- */
+if ( !function_exists( 'wdp_un_check' ) ) {
+  add_action( 'admin_notices', 'wdp_un_check', 5 );
+  add_action( 'network_admin_notices', 'wdp_un_check', 5 );
+  function wdp_un_check() {
+    if ( !class_exists( 'WPMUDEV_Update_Notifications' ) && current_user_can( 'edit_users' ) )
+      echo '<div class="error fade"><p>' . __('Please install the latest version of <a href="http://premium.wpmudev.org/project/update-notifications/" title="Download Now &raquo;">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">More information &raquo;</a>', 'wpmudev') . '</a></p></div>';
+  }
+}
+/* --------------------------------------------------------------------- */
 ?>
