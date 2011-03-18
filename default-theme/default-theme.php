@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Default Theme
-Version: 1.0.2
+Version: 1.0.3
 Plugin URI: http://premium.wpmudev.org/project/default-theme
 Description: Allows you to easily select a new default theme for new blog signups
 Author: Aaron Edwards (for Incsub)
@@ -51,12 +51,24 @@ function default_theme_localization() {
 }
 
 function default_theme_switch_theme($blog_ID) {
+
 	$default_theme = get_site_option('default_theme');
-	if ( !empty( $default_theme ) ) {
-		switch_to_blog( $blog_ID );
-		switch_theme( $default_theme, $default_theme );
-		restore_current_blog();
+  $themes = get_themes();
+
+  //we have to go through all this to handle child themes, otherwise it will throw errors
+  foreach( (array) $themes as $key => $theme ) {
+		$stylesheet = wp_specialchars($theme['Stylesheet']);
+		$template = wp_specialchars($theme['Template']);
+		if ($default_theme == $stylesheet || $default_theme == $template) {
+      $new_stylesheet = $stylesheet;
+      $new_template = $template;
+		}
 	}
+
+  //activate it
+  switch_to_blog( $blog_ID );
+	switch_theme( $new_template, $new_stylesheet );
+	restore_current_blog();
 }
 
 function default_theme_site_admin_options_process() {
