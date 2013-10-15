@@ -3,8 +3,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Default Theme 1.0.3\n"
-"Report-Msgid-Bugs-To: http://premium.wpmudev.org/\n"
-"POT-Creation-Date: 2013-10-10 15:38:19+00:00\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/default-theme\n"
+"POT-Creation-Date: 2013-10-15 07:24:25+00:00\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -20,6 +20,8 @@ msgstr ""
 msgid "Theme Settings"
 msgstr ""
 
+#. #-#-#-#-#  defaulttheme-default.pot (Default Theme 1.0.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
 #: default-theme.php:94
 msgid "Default Theme"
 msgstr ""
@@ -29,10 +31,13 @@ msgid "Default theme applied to new blogs."
 msgstr ""
 
 #: default-theme.php:121
-msgid "Please install the latest version of <a href=\"http://premium.wpmudev.org/project/update-notifications/\" title=\"Download Now &raquo;\">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href=\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/\">More information &raquo;</a>"
-msgstr ""
-#. Plugin Name of the plugin/theme
-msgid "Default Theme"
+msgid ""
+"Please install the latest version of <a href=\"http://premium.wpmudev.org/"
+"project/update-notifications/\" title=\"Download Now &raquo;\">our free "
+"Update Notifications plugin</a> which helps you stay up-to-date with the "
+"most stable, secure versions of WPMU DEV themes and plugins. <a href="
+"\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-"
+"information/\">More information &raquo;</a>"
 msgstr ""
 
 #. Plugin URI of the plugin/theme
