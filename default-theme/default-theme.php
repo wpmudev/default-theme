@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Default Theme
-Version: 1.0.3
+Version: 1.0.4
 Plugin URI: http://premium.wpmudev.org/project/default-theme
 Description: Allows you to easily select a new default theme for new blog signups
 Author: Aaron Edwards (for Incsub)
@@ -10,7 +10,7 @@ Network: true
 WDP ID: 48
 */
 
-/* 
+/*
 Copyright 2007-2011 Incsub (http://incsub.com)
 
 This program is free software; you can redistribute it and/or modify
@@ -26,6 +26,10 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
+
+global $wpmudev_notices;
+$wpmudev_notices[] = array( 'id'=> 48, 'name'=> 'Default Theme', 'screens' => array( 'settings-network' ) );
+include_once(plugin_dir_path( __FILE__ ).'external/dash-notice/wpmudev-dash-notification.php');
 
 //force multisite
 if ( !is_multisite() )
@@ -90,7 +94,7 @@ function default_theme_site_admin_options() {
 ?>
 		<h3><?php _e('Theme Settings', 'defaulttheme') ?></h3>
 		<table class="form-table">
-      <tr valign="top"> 
+      <tr valign="top">
       <th scope="row"><?php _e('Default Theme', 'defaulttheme') ?></th>
       <td><select name="default_theme">
       <?php
@@ -105,21 +109,3 @@ function default_theme_site_admin_options() {
 		</table>
 <?php
 }
-
-//------------------------------------------------------------------------//
-//---Page Output Functions------------------------------------------------//
-//------------------------------------------------------------------------//
-
-
-///////////////////////////////////////////////////////////////////////////
-/* -------------------- Update Notifications Notice -------------------- */
-if ( !function_exists( 'wdp_un_check' ) ) {
-  add_action( 'admin_notices', 'wdp_un_check', 5 );
-  add_action( 'network_admin_notices', 'wdp_un_check', 5 );
-  function wdp_un_check() {
-    if ( !class_exists( 'WPMUDEV_Update_Notifications' ) && current_user_can( 'edit_users' ) )
-      echo '<div class="error fade"><p>' . __('Please install the latest version of <a href="http://premium.wpmudev.org/project/update-notifications/" title="Download Now &raquo;">our free Update Notifications plugin</a> which helps you stay up-to-date with the most stable, secure versions of WPMU DEV themes and plugins. <a href="http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-information/">More information &raquo;</a>', 'wpmudev') . '</a></p></div>';
-  }
-}
-/* --------------------------------------------------------------------- */
-?>
