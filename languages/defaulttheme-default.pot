@@ -1,0 +1,57 @@
+# Copyright (C) 2013 Default Theme
+# This file is distributed under the same license as the Default Theme package.
+msgid ""
+msgstr ""
+"Project-Id-Version: Default Theme 1.0.3\n"
+"Report-Msgid-Bugs-To: http://wordpress.org/tag/default-theme\n"
+"POT-Creation-Date: 2013-10-15 07:24:25+00:00\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"PO-Revision-Date: 2013-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+
+#: default-theme.php:32
+msgid "Default Theme is only compatible with Multisite installs."
+msgstr ""
+
+#: default-theme.php:91
+msgid "Theme Settings"
+msgstr ""
+
+#. #-#-#-#-#  defaulttheme-default.pot (Default Theme 1.0.3)  #-#-#-#-#
+#. Plugin Name of the plugin/theme
+#: default-theme.php:94
+msgid "Default Theme"
+msgstr ""
+
+#: default-theme.php:103
+msgid "Default theme applied to new blogs."
+msgstr ""
+
+#: default-theme.php:121
+msgid ""
+"Please install the latest version of <a href=\"http://premium.wpmudev.org/"
+"project/update-notifications/\" title=\"Download Now &raquo;\">our free "
+"Update Notifications plugin</a> which helps you stay up-to-date with the "
+"most stable, secure versions of WPMU DEV themes and plugins. <a href="
+"\"http://premium.wpmudev.org/wpmu-dev/update-notifications-plugin-"
+"information/\">More information &raquo;</a>"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "http://premium.wpmudev.org/project/default-theme"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Allows you to easily select a new default theme for new blog signups"
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Aaron Edwards (for Incsub)"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://uglyrobot.com"
+msgstr ""
