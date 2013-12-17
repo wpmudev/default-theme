@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: Default Theme
-Version: 1.0.4
+Version: 1.0.3.1
 Plugin URI: http://premium.wpmudev.org/project/default-theme
 Description: Allows you to easily select a new default theme for new blog signups
 Author: Aaron Edwards (for Incsub)
@@ -26,10 +26,6 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
-
-global $wpmudev_notices;
-$wpmudev_notices[] = array( 'id'=> 48, 'name'=> 'Default Theme', 'screens' => array( 'settings-network' ) );
-include_once(plugin_dir_path( __FILE__ ).'external/dash-notice/wpmudev-dash-notification.php');
 
 //force multisite
 if ( !is_multisite() )
@@ -109,3 +105,7 @@ function default_theme_site_admin_options() {
 		</table>
 <?php
 }
+
+global $wpmudev_notices;
+$wpmudev_notices[] = array( 'id'=> 48, 'name'=> 'Default Theme', 'screens' => array( 'settings-network' ) );
+include_once(plugin_dir_path( __FILE__ ).'external/dash-notice/wpmudev-dash-notification.php');
