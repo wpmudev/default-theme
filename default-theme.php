@@ -1,17 +1,18 @@
 <?php
 /*
 Plugin Name: Default Theme
-Version: 1.0.3.1
-Plugin URI: http://premium.wpmudev.org/project/default-theme
+Version: 1.0.3.2
+Plugin URI: https://premium.wpmudev.org/project/default-theme/
 Description: Allows you to easily select a new default theme for new blog signups
-Author: Aaron Edwards (for Incsub)
-Author URI: http://uglyrobot.com
+Author: WPMU DEV
+Author URI: https://premium.wpmudev.org
 Network: true
 WDP ID: 48
 */
 
 /*
-Copyright 2007-2011 Incsub (http://incsub.com)
+Copyright 2007-2015 Incsub (http://incsub.com)
+Developer: Aaron Edwards
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (Version 2 - GPLv2) as published by
